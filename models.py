@@ -23,6 +23,7 @@ class Report(Base):
     patient_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     file_path = Column(String, nullable=False)
     status = Column(String, default="uploaded") # uploaded, processed, verified
+    ai_summary = Column(Text, nullable=True)     # <--- ADDED THIS FIELD
     created_at = Column(DateTime, default=datetime.utcnow)
     
     patient = relationship("User", back_populates="reports", foreign_keys=[patient_id])
